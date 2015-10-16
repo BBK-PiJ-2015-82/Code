@@ -1,0 +1,15 @@
+print("Hi! ");
+
+println("What's your name?");
+
+String name = readLine();
+
+println("How " + getSubstring(1,4,"Mold") + " are you?");
+
+int age = readInt();
+
+println("Nice to meet you, " + name + "!");
+
+String getSubstring(int firstIndex, int secondIndex, String s) {
+    return s.substring(firstIndex, secondIndex);
+}
