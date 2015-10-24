@@ -2,7 +2,7 @@
 
 int power(int b, int e) {
 	int x
-	if (e == 0){
+	if (e == 0) {
 		x = 1;
 	} else {
 		x = b;
@@ -35,14 +35,10 @@ int binary2decimal(String binaryinput){
 		int calculateddigit = 0;
 		int powerdigit = binaryinput.length() - 1;
 		for (int i = 0 ; i < binaryinput.length() ; i++) {
-			digittoincrement = Integer.parseInt("" + binaryinput.charAt(i));  // new String(c) 
-			//println(digittoincrement);
-			//println(powerdigit);
+			digittoincrement = Integer.parseInt("" + binaryinput.charAt(i));  // note - this to turn a char into a string, sergio also suggests: new String(c) 
 			calculateddigit = calculateddigit + (digittoincrement * power2(powerdigit));
 			powerdigit--;
-			//println(powerdigit);
-			//println(digittoincrement);
-			//println(i);
+
 			println(calculateddigit);
 		}
 	
@@ -52,8 +48,32 @@ int binary2decimal(String binaryinput){
 
 }
 
+// afraid that, to save time I've used some methods that I looked up such as .toString(), .concat(), .reverse()
 
-int z =  binary2decimal("01010110110");
+String decimalToBinary (int decimalInput){
+	String binaryOutput = "";
+	int moduloNumericalOutput
+	String moduloOutput;
+	//int startPosition = decimalInput.length() - 1;
+	for (;decimalInput >= 1; decimalInput = decimalInput / 2) {
+
+		moduloNumericalOutput = decimalInput % 2;
+		moduloOutput = moduloNumericalOutput.toString();
+		binaryOutput = binaryOutput.concat(moduloOutput)
+		
+
+	}
+
+	
+		binaryOutput = binaryOutput.reverse();
+
+	
+	return binaryOutput;
+}
+
+
+String z = decimalToBinary(65465);
+//int z =  binary2decimal("01010110110");
 //int z = power(3,2);
 //println(""+power(7,0));
 
