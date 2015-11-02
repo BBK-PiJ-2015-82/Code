@@ -21,7 +21,7 @@ int power2(int userinput){
 	//String userinput;
 	//e = Integer.parseInt(System.console().readLine("userinput"));
 	//println userinput;
-	this.userinput = userinput;
+	//this.userinput = userinput;
 	int x = power(2, userinput);
 	return x;
 }
@@ -39,7 +39,6 @@ int binary2decimal(String binaryinput){
 			calculateddigit = calculateddigit + (digittoincrement * power2(powerdigit));
 			powerdigit--;
 
-			println(calculateddigit);
 		}
 	
 	
@@ -71,12 +70,39 @@ String decimalToBinary (int decimalInput){
 	return binaryOutput;
 }
 
+String userStringInput
+println("Please enter which function to do, 1 for binary to decimal, 2 for decimal to binary: ")
+char userChoice = System.console().readLine().charAt(0);
+println(userChoice)
+int userNumber
+String userOutput
+int userOutputInt
 
-String z = decimalToBinary(65465);
-//int z =  binary2decimal("01010110110");
+if (userChoice == "1") {
+	println("Please enter binary number to be converted to decimal: ");
+	userStringInput = System.console().readLine();
+
+	//userNumber = Integer.parseInt(userStringInput);
+	userOutputInt = binary2decimal(userStringInput);
+	println(userOutputInt);
+} else if (userChoice == "2") {
+	println("Please enter decimal number to be converted to binary: ");
+	userStringInput = System.console().readLine();
+
+	userNumber = Integer.parseInt(userStringInput);
+	userOutput = decimalToBinary(userNumber);
+	println(userOutput);
+
+
+} 
+
+
+
+//String z = decimalToBinary(65465);
+//int z =  binary2decimal("10101010");
 //int z = power(3,2);
 //println(""+power(7,0));
 
 
 
-print z;
+//print z;
