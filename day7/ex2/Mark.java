@@ -21,11 +21,14 @@ public class Mark {
 		
 		do {
 			String userInput = System.console().readLine();
+			if (Integer.parseInt(userInput) > 60) {
+				this.distinction++;
+			}
 			
 			//finished here - TBC...
 			
 			
-		}
+		} while (userInput != "quit");
 	}	
 	
 }

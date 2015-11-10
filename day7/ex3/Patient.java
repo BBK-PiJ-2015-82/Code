@@ -3,7 +3,7 @@ public class Patient {
 	private int age;
 	private String illness;
 	private Patient nextPatient;
-	private int numberPatients;
+	private static int numberPatients;
 
 
 	// CONSTRUCTOR - (no void!)
@@ -32,36 +32,8 @@ public class Patient {
 		return returnValue;
 	} 
 
+	public void init() {
 
-	public String printPatients() {
-
-		if (this == null) {
-			System.out.println("There is nothing to print");
-		} 
-		else
-		{
-			if (this.nextPatient == null) {
-				System.out.println(this.toString());
-			} else {
-				System.out.println(this.toString());
-				this.nextPatient.printPatients();	
-			}	
-
-		}
-
-	} 	
-
-	/*public String printPatients() {
-		String returnValue;
-		if (this.nextPatient == null) {
-			return this.name;
-		} else {
-			returnValue = returnValue.concat(", " + printPatients().nextPatient.name);	
-		}	
-	} */
-	// other methods come here...
-
- 	public static void main (String[] args) {
 		Patient patient1 = new Patient("Paul", 34, "Cancer");
 		Patient patient2 = new Patient("Solomon", 24, "Bad leg");
 		Patient patient3 = new Patient("John", 11, "Cold");
@@ -86,11 +58,79 @@ public class Patient {
 		patientListStart.addPatient(patient9);
 		patientListStart.addPatient(patient10);
 
+		patientListStart.printPatient();
+
+	}
+
+	public Patient getNextPatient() {
+
+		if (this.nextPatient == null) {
+		// this means this is the last patient in the list
+			return nextPatient;
+		} else {
+			return this.nextPatient.getNextPatient();
+		}
+	}
+
+	public void printPatient() {
+
+		if (this.nextPatient == null) {
+		// this means this is the last patient in the list
+			System.out.println(this.name);
+		} else {
+			System.out.println(this.getNextPatient().name);
+		}
+	}
+/*
+	public String printPatients() {
+		while (nextPatient != null) {
+			System.out.println(this.patient.name);
+
+			} 
+
+	}
+
+	*/
+
+	/*
+
+	public String printPatients() {
+
+		if (this == null) {
+			System.out.println("There is nothing to print");
+		} 
+		else
+		{
+			if (this.nextPatient == null) {
+				System.out.println(this.toString());
+			} else {
+				System.out.println(this.toString());
+				this.nextPatient.printPatients();	
+			}	
+
+		}
+
+	} 	
+*/
+	/*public String printPatients() {
+		String returnValue;
+		if (this.nextPatient == null) {
+			return this.name;
+		} else {
+			returnValue = returnValue.concat(", " + printPatients().nextPatient.name);	
+		}	
+	} */
+	// other methods come here...
+
+ 	public static void main (String[] args) {
+		
 		
 
 			//System.out.println(patient1.nextPatient.name);
-		System.out.println(printPatients());
-		
+		//Patient patient = new Patient();
+
+	Patient patient = new Patient();
+	patient.init();		
 
 
 
