@@ -29,18 +29,30 @@ public class Hospital {
 
 		//first name in list
 		} else if (head.getName().equals(name)) {
-
+			
 			head = head.getNext();
+			head.setPrev(null);
 		} else {
 			Patient current = head;
 
 			while (!current.getNext().getName().equals(name) && current.getNext() != null) {
-				System.out.println("yes");
+				//System.out.println("yes");
 				current = current.getNext();
 			}
+			System.out.println("current" + current.getName());
+			if (current.getNext().getNext() == null) {
+				current.getNext().setPrev(null);
+				current.setNext(null);
 
+			} else {
+
+			Patient prev = current.getNext().getNext();
 			current.setNext(current.getNext().getNext());
-			getNext().getNext().setPrev(current);
+			prev.setPrev(current);
+
+			}
+			//current.getNext().getNext().setPrev(current); // not sure about this
+
 
 			
 			//	if (current.getNext() == null) {
@@ -78,23 +90,23 @@ public class Hospital {
 
 	}
 
-	public void listLengthRecursionInit() {
-		System.out.println(this.listLengthRecursionAction(1, this.head));
+	//public void listLengthRecursionInit() {
+	//	System.out.println(this.head.listLengthRecursionAction(1, this.head));
 
-	}
+	//}
 
-	public Patient listLengthRecursionAction(int counter, Patient current) {
-		if (current.getNext() == null) {
-			return 0;
-		}
-		//counter++;
-		return current.listLengthRecursionAction(1, current.getNext());
+	//public Patient listLengthRecursionAction(int counter, Patient current) {
+	//	if (current.getNext() == null) {
+	//		return 0;
+	//	}
+	//	//counter++;
+	//	return current.listLengthRecursionAction(1, current.getNext());
 
 		//HERE
 
 
 
-	}
+	
 
 	public void launch() {
 		Patient john = new Patient("John", 22, "Flu");
@@ -118,12 +130,24 @@ public class Hospital {
 		this.addPatient(patient4);
 		this.addPatient(patient9);
 
-		john.printPatients();
+		//john.printPatients();
+		john.printPatientsIterative();
 
-		//this.removePatients("John");
+		this.removePatients("Norma");
+		john.printPatientsIterative();
+
+		//this.removePatients("Norma");
+		//patient1.printPatientsIterative();
+		//System.out.println(patient1.getPrev());
+		//System.out.println(patient1.getPrev());
+		//this.removePatients("Saul");
+
+		//this.addPatient(patient10);
+
 		//System.out.println(this.head.getName());		
 		this.listLengthIteration();
-		this.listLengthRecursionInit();
+		//System.out.println(patient2.getPrev());
+		//this.listLengthRecursionInit();
 
 
 
@@ -136,9 +160,6 @@ public class Hospital {
 
 
 	}
-
-
-
 
 
 }

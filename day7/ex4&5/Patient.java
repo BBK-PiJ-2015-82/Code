@@ -13,11 +13,16 @@ public class Patient {
 	}
 
 	public Patient getNext() {
-		return nextPatient;
+		return this.nextPatient;
 	}
 
 	public void setNext(Patient next) {
 		this.nextPatient = next;
+
+	}
+
+	public Patient getPrev() {
+		return this.prevPatient;
 
 	}
 
@@ -31,6 +36,7 @@ public class Patient {
 	}
 
 	public void printPatients() {
+		Patient current = this;
 		if (this == null) {
 			System.out.println("There is nothing to print");
 		} 
@@ -43,7 +49,31 @@ public class Patient {
 				this.nextPatient.printPatients();	
 			}	
 		}
-	} 	
+	}
+
+	public void printPatientsIterative() {
+		Patient current = this;
+		
+		// set to print upward
+		while(current.nextPatient != null) {
+
+			System.out.println(current.toString());
+			current = current.nextPatient;
+		}
+		//set to print downward
+		do {
+			System.out.println(current.toString());
+			current = current.prevPatient;
+		} while(current.prevPatient != null);
+		if (current.prevPatient == null) {
+			System.out.println(current.toString());
+		}
+
+
+	}
+
+		
+	
 	
 	public String toString() {
 		String returnValue = "";
