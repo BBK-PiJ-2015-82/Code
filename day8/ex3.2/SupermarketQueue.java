@@ -50,7 +50,23 @@ public class SupermarketQueue implements PersonQueue {
 	}
 
 	public Person getHead() {
-		return (Person aPerson = (head == null)? null : head);
+		if (this.head == null) {
+			return null;
+		} else {
+			return this.head;
+		}
+	}
+
+	public void setHead(Person person) {
+		this.head = person;
+	}
+
+	public void setCounter() {
+		this.counter++;
+	}
+
+	public void countDown() {
+		this.counter--;
 	}
 
 }
