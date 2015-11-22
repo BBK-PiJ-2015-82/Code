@@ -87,6 +87,29 @@ public class IntegerTreeNode {
 		}	while (left != null);
 		return lowest.value;
 	}
+
+	public String toString() {
+		String returnString = "";
+		IntegerTreeNode current = this;
+		returnString.concat("[" + current.value);
+
+		while (current.left != null && current.right != null) {
+			current = current.left;
+			returnString.concat("L [" + current.value);
+
+		}
+	}
+//starting this recursively
+	if (this.left == null && this.right == null) {
+		return (this.value + "]");
+	} else if (this.left == null) {
+		return (this.value.concat(right.toString()));
+	} else {
+		return this.concat(left.toString)
+	}
+
+
+	returnString.concat(left.toString());
 /*
 
 ABANDONED RECURSION METHOD, CAN'T WORK OUT HOW TO COMPARE VALUES BEING RETURN 
@@ -103,7 +126,7 @@ ABANDONED RECURSION METHOD, CAN'T WORK OUT HOW TO COMPARE VALUES BEING RETURN
 			return this.value;
 			}
 	}
-**/
+	**/
 	public void launch() {
 		add(99);
 		add(99);
