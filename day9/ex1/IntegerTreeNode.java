@@ -53,10 +53,48 @@ public class IntegerTreeNode {
 	}
 
 	public int getMax() {
+		IntegerTreeNode current = this;
+		IntegerTreeNode highest = this;
+
+		do {
+			System.out.println("in loop");
+			System.out.println(highest.value);
+			if (current.value > highest.value) {
+				highest = current;
+			}
+			if (current.right == null) {
+				break;
+			}
+			current = current.right;
+		}	while (right != null);
+		return highest.value;
+	}
+
+	public int getMin() {
+		IntegerTreeNode current = this;
+		IntegerTreeNode lowest = this;
+
+		do {
+			System.out.println("in loop");
+			System.out.println(lowest.value);
+			if (current.value < lowest.value) {
+				lowest = current;
+			}
+			if (current.left == null) {
+				break;
+			}
+			current = current.left;
+		}	while (left != null);
+		return lowest.value;
+	}
+/*
+
+ABANDONED RECURSION METHOD, CAN'T WORK OUT HOW TO COMPARE VALUES BEING RETURN 
+	public int getMax() {
 		//see if right is empty, if not getmax again
 		if (right != null) {
 			System.out.println("right not null");
-			return right.getMax();
+			right.getMax();
 		//if right is empty
 		} else if (left != null) {
 			System.out.println("left not null");
@@ -65,21 +103,24 @@ public class IntegerTreeNode {
 			return this.value;
 			}
 	}
-
+**/
 	public void launch() {
-		add(9);
-		add(44);
-		add(77);
-		add(83);
-		add(11);
-		add(1);
-		add(234);
-		add(5);
-		add(789);
-		add(776);
-		add(8);
 		add(99);
-		System.out.println(getMax());
+		add(99);
+		add(3);
+		add(4);
+		add(12);
+		add(6);
+		add(7);
+		add(55);
+		add(9);
+		add(10);
+		add(11);
+		add(13);
+		//System.out.println(this.right.right.value);
+		System.out.println(this.getMax());
+		System.out.println(this.getMin());
+
 
 		//System.out.println(this.right.right.right.value);
 
@@ -87,7 +128,7 @@ public class IntegerTreeNode {
 
 
 	public static void main (String[] args) {
-		IntegerTreeNode integerTreeNode = new IntegerTreeNode(99);
+		IntegerTreeNode integerTreeNode = new IntegerTreeNode(5);
 		integerTreeNode.launch();
 	}
 
