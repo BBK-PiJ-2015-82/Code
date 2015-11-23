@@ -87,7 +87,7 @@ public class IntegerTreeNode {
 		}	while (left != null);
 		return lowest.value;
 	}
-
+/*
 	public String toString() {
 		String returnString = "";
 		IntegerTreeNode current = this;
@@ -99,19 +99,49 @@ public class IntegerTreeNode {
 
 		}
 	}
+
+	**/
 //starting this recursively
-	if (this.left == null && this.right == null) {
-		return (this.value + "]");
-	} else if (this.left == null) {
-		return (this.value.concat(right.toString()));
-	} else {
-		return this.concat(left.toString)
+
+	public String toString() {
+		//start string
+		String returnString = "";
+		//returnString = returnString.concat(toString());
+		//return value for the end of the recursion when no left or right
+		
+		returnString = returnString.concat("[" + this.value + "]");
+			returnString = returnString.concat("L[" + left.toString());
+			returnString = returnString.concat("R[" + right.toString());
+
+		/*if (this.left != null) {
+			returnString = returnString.concat("L[" + left.toString());
+		} else if (this.right != null) {
+			returnString = returnString.concat("R[" + right.toString());
+		}	/*else if (this.left == null && this.right == null) {
+			returnString = returnString.concat("[" + this.value + "]");
+		} **/
+
+
+		return returnString;
+
+		
 	}
+		/*
+		//if left add that
+		if (this.left == null && this.right == null) {
+			return (this.value + left.toString() + "]");
+		} else if (this.left == null) {
+			return (this.value.concat(right.toString()));
+		} else {
+			return this.concat(left.toString);
+		}
 
 
-	returnString.concat(left.toString());
+		returnString.concat(left.toString());
+
+	}
 /*
-
+	
 ABANDONED RECURSION METHOD, CAN'T WORK OUT HOW TO COMPARE VALUES BEING RETURN 
 	public int getMax() {
 		//see if right is empty, if not getmax again
@@ -128,9 +158,10 @@ ABANDONED RECURSION METHOD, CAN'T WORK OUT HOW TO COMPARE VALUES BEING RETURN
 	}
 	**/
 	public void launch() {
+		
 		add(99);
 		add(99);
-		add(3);
+		add(1111);
 		add(4);
 		add(12);
 		add(6);
@@ -139,10 +170,13 @@ ABANDONED RECURSION METHOD, CAN'T WORK OUT HOW TO COMPARE VALUES BEING RETURN
 		add(9);
 		add(10);
 		add(11);
+		
 		add(13);
-		//System.out.println(this.right.right.value);
+		add(3);
+		//System.out.println(this.left.right.value);
 		System.out.println(this.getMax());
 		System.out.println(this.getMin());
+		System.out.println(toString());
 
 
 		//System.out.println(this.right.right.right.value);
