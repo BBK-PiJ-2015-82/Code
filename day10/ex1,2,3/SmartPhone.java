@@ -5,6 +5,8 @@ public class SmartPhone extends MobilePhone {
 		super("iPhone");
 	}
 
+	
+
 	public void browseWeb(String str) {
 		System.out.println(str + " on the internet");
 	}

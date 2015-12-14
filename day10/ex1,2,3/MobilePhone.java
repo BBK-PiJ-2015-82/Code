@@ -7,8 +7,8 @@ public class MobilePhone extends OldPhone {
 		for (int i = 0; i < last10Numbers.length ; i++ ) {
 			last10Numbers[i] = "0";
 		}
-	
-}
+
+	}
 
 
 

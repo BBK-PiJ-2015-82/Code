@@ -1,4 +1,4 @@
-public class PhoneLauncher extends SmartPhone {
+public class PhoneLauncher extends RestrictedSmartPhone {
 
 	public static void main(String[] args) {
 		PhoneLauncher launcher = new PhoneLauncher();
