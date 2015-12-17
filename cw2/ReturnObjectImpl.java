@@ -4,8 +4,9 @@ public class ReturnObjectImpl implements ReturnObject {
 	ErrorMessage errorMsg;
 
 
-	public ReturnObjectImpl(Object inputObject, ErrorMessage msg) {
+	public ReturnObjectImpl(Object inputObject) {
 		this.object = inputObject;
+		errorMsg = ErrorMessage.NO_ERROR;
 	}
 
 	public ReturnObjectImpl(ErrorMessage msg) {
@@ -30,6 +31,15 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 
 
-	public Object getReturnValue();
+	public Object getReturnValue() {
+
+		if (errorMsg != ErrorMessage.NO_ERROR) {
+			return this.object;
+		} else {
+			return null;
+
+		}
+
+		}
 
 }
