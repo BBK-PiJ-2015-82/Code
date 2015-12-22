@@ -1,6 +1,6 @@
 public class ArrayList implements List {
 	
-	Object[] objectArray;
+	private Object[] objectArray;
 
 	public ArrayList() {
 		objectArray = new Object[100];
@@ -38,28 +38,71 @@ public class ArrayList implements List {
 	public ReturnObjectImpl get(int index) {
 		ReturnObjectImpl returnObj = null;
 
-		if (index >= objectArray.length || index < 0) {
+		if (index < 0 || index > (size() - 1)) {
 			returnObj = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-			return returnObj;
 		} else if (isEmpty()) {
-			ReturnObjectImpl returnObj = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
-			return returnObj;
+			returnObj = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-			ReturnObjectImpl returnObj = new ReturnObjectImpl(objectArray[index]);
-			return returnObj;
+			returnObj = new ReturnObjectImpl(objectArray[index]);
 		}
+		return returnObj;
+
 	}
 
 	
 
 	@Override
 	public ReturnObjectImpl remove(int index) {
+		ReturnObjectImpl returnObj = null;
+			System.out.println("index = " + index + "size is " + size());
+
+		if (index < 0 || index > (size() - 1)) {
+			returnObj = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (isEmpty()) {
+			returnObj = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		} else if (index == (size() - 1)) {
+			returnObj = new ReturnObjectImpl(objectArray[size() - 1]);
+			objectArray[size() - 1] = null;
+		} else {
+			returnObj = new ReturnObjectImpl(objectArray[index]);
+			for (int i = index ; i <= size() ; i++) {
+				objectArray[i] = objectArray[i + 1];
+			}
+			System.out.println("index = " + index + "size is " + size());
+		}
+
+		return returnObj;
 
 
 	}
 
 	@Override
-	public ReturnObject add(int index, Object item){};
+	public ReturnObject add(int index, Object item){
+		ReturnObjectImpl returnObj = null;
+
+		if (index < 0 || index > (size() - 1)) {
+			returnObj = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (isEmpty()) {
+			returnObj = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		} else if (index == (size() - 1)) {
+			objectArray[index] = item;
+		} else {
+
+			objectArray = enlargeArray(objectArray);
+
+
+			for (int i = size() ; i >= index ; i--) {
+				objectArray[i + 1] = objectArray[i];
+							System.out.println("i = " + index + "size is " + size());
+
+
+			}
+			objectArray[index] = item;
+
+		}
+					return returnObj;
+
+	}
 
 	@Override
 	public ReturnObject add(Object item) {
@@ -69,29 +112,31 @@ public class ArrayList implements List {
 			returnObj = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 		// check if array is full, if so create another larger one
-				if (this.objectArray[objectArray.length - 1] != null) {
-					objectArray = enlargeArray(objectArray);
-				}
+			if (this.objectArray[objectArray.length - 1] != null) {
+				objectArray = enlargeArray(objectArray);
+			}
 
-				for (int i = 0; i < objectArray.length ; i++) {
-					if (objectArray[i] == null) {
-						objectArray[i] = item;
-						break;
-					}
+			for (int i = 0; i < objectArray.length ; i++) {
+				if (objectArray[i] == null) {
+					objectArray[i] = item;
+					break;
 				}
+			}
 		}
-	return returnObj;
+
+		return returnObj;
 
 
 	}
 
-	private Object[] enlargeArray(Object[] anArray) {
-		Object[] newArray = new Object[anArray.length + 100];
-		for (int i = 0; i < anArray.length ; i++) {
-			newArray[i] = anArray[i];
-		}
-		return newArray;
+private Object[] enlargeArray(Object[] anArray) {
+	System.out.println("englarding array");
+	Object[] newArray = new Object[anArray.length + 1];
+	for (int i = 0; i < anArray.length ; i++) {
+		newArray[i] = anArray[i];
 	}
+	return newArray;
+}
 
 }
 

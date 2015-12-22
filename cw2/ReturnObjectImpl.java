@@ -33,7 +33,7 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	public Object getReturnValue() {
 
-		if (errorMsg != ErrorMessage.NO_ERROR) {
+		if (errorMsg == ErrorMessage.NO_ERROR) {
 			return this.object;
 		} else {
 			return null;
