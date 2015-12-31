@@ -14,13 +14,13 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.errorMsg = msg;
 	}
 
-		public boolean hasError() {
-			if (object == null) {
-				return true;
-			} else {
-				return false;
-			}
+	public boolean hasError() {
+		if (object == null) {
+			return true;
+		} else {
+			return false;
 		}
+	}
 
 
 	public ErrorMessage getError() {
@@ -40,6 +40,6 @@ public class ReturnObjectImpl implements ReturnObject {
 
 		}
 
-		}
+	}
 
 }

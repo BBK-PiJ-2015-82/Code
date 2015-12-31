@@ -3,6 +3,7 @@ public class TestObj extends Object {
 	private String aString;
 
 	public TestObj(String constString) {
+		super();
 		this.aString = constString;
 		this.anInt = 0;
 	}
