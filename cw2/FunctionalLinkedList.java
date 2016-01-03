@@ -8,8 +8,6 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 		super(a);
 	}
 
-	// a 'Copy' constructor
-
 	public FunctionalLinkedList(FunctionalLinkedList copy) {
 		if (copy.getHead().getNext() != null || copy.getHead() == null) {
 			this.setHead(copy.getHead().getNext());
@@ -18,6 +16,7 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 		}
 	}
 
+	@Override
 	public ReturnObject head() {
 		//remember - validation in the LinkedList class will manage
 		//the error message
@@ -25,10 +24,8 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 		return super.get(0);
 	}
 
-
+	@Override
     public FunctionalList rest() {
 	 	return new FunctionalLinkedList(this);
     }
-    	
-
 }

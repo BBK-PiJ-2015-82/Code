@@ -34,7 +34,6 @@ public class ArrayList implements List {
 	@Override
 	public int size() {
 		int i;
-
 		if (isEmpty()) {
 			return 0;
 		} else {
@@ -42,18 +41,14 @@ public class ArrayList implements List {
 				if (objectArray[i] == null) {
 					break;
 				} 
-
 			}
 		}
 		return i;
-
-
 	}
 
 	@Override
 	public ReturnObjectImpl get(int index) {
 		ReturnObjectImpl returnObj = null;
-
 		if ((index < 0 || index > (size() - 1)) && !isEmpty()) {
 			returnObj = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (isEmpty()) {
@@ -62,16 +57,11 @@ public class ArrayList implements List {
 			returnObj = new ReturnObjectImpl(objectArray[index]);
 		}
 		return returnObj;
-
 	}
-
-	
 
 	@Override
 	public ReturnObjectImpl remove(int index) {
 		ReturnObjectImpl returnObj = null;
-		//System.out.println("index = " + index + "size is " + size());
-
 		if ((index < 0 || index > (size() - 1)) && !isEmpty()) {
 			returnObj = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (isEmpty()) {
@@ -88,21 +78,14 @@ public class ArrayList implements List {
 					objectArray[i] = objectArray[i + 1];
 				}
 			}
-			//System.out.println("index = " + index + "size is " + size());
 		}
-
 		return returnObj;
-
-
 	}
 
 	@Override
 	public ReturnObject add(int index, Object item){
 		ReturnObjectImpl returnObj = null;
-		//System.out.println("method starts");
-
 		if (item == null) {
-	//		System.out.println("item  null");
 			returnObj = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			if ((index < 0 || index > (size() - 1)) && !isEmpty()) {
@@ -115,29 +98,22 @@ public class ArrayList implements List {
 				objectArray = enlargeArray(objectArray);
 				for (int i = size() ; i >= index ; i--) {
 					objectArray[i + 1] = objectArray[i];
-				//	System.out.println("i = " + index + "size is " + size());
 				}
 				objectArray[index] = item;
-
 			}
 		}
 		return returnObj;
 	}
 
-
-
 	@Override
 	public ReturnObject add(Object item) {
 		ReturnObjectImpl returnObj = null;
-		// check if item is invalid and return error if so
 		if (item == null) {
 			returnObj = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
-		// check if array is full, if so create another larger one
 			if (this.objectArray[objectArray.length - 1] != null) {
 				objectArray = enlargeArray(objectArray);
 			}
-
 			for (int i = 0; i < objectArray.length ; i++) {
 				if (objectArray[i] == null) {
 					objectArray[i] = item;
@@ -145,30 +121,17 @@ public class ArrayList implements List {
 				}
 			}
 		}
-
 		return returnObj;
-
-
 	}
 
+	// ADDITIONAL METHODS
+
 	private Object[] enlargeArray(Object[] anArray) {
-		//System.out.println("englarding array");
 		Object[] newArray = new Object[size() * 2];
-	//System.out.println(newArray.length);
 		for (int i = 0; i < size() ; i++) {
 			newArray[i] = anArray[i];
 		}
 		return newArray;
-	}
-
-	public Object[] returnArrayWithoutHead() {
-		if (isEmpty()) {
-			return objectArray;
-		} else {
-			ArrayList copy = this;
-			copy.remove(0);
-			return copy.objectArray;
-		}
 	}
 
 	public Object[] returnSampledArray() {
@@ -179,9 +142,7 @@ public class ArrayList implements List {
 		return returnArray.objectArray;
 	}
 
-
-
-	// HERE FOR TESTING
+	// METHOD FOR TESTING
 
 	public void toStringFull() {
 		for (int i = 0; i < size(); i++) {
@@ -191,28 +152,3 @@ public class ArrayList implements List {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

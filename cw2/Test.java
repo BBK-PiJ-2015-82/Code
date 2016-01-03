@@ -484,6 +484,9 @@ public class Test {
 		if (!stackImpl.isEmpty()) {
 			returnValue = false;
 		}
+		if (stackImpl.pop().getError() != ErrorMessage.EMPTY_STRUCTURE) {
+			returnValue = false;
+		}
 
 		// Test works with array and linkedlist
 
@@ -553,16 +556,52 @@ public class Test {
 
 	public boolean testImprovedStackImplReverse() {
 		boolean returnValue = true;
-		ArrayList list = createArrayList(55);
-		ImprovedStack stack = new ImprovedStackImpl(list);
-		//stack.toStringFull();
-		stack = stack.reverse();
+		ArrayList list = createArrayList(0);
 
-		if (!stack.pop().getReturnValue().toString().equals("55")) {
+		//NOTE - THIS WILL CREATE A STACK 1-55 NOT 55-1
+		ImprovedStack stack = new ImprovedStackImpl(list);
+
+		if (stack.pop().getError() != ErrorMessage.EMPTY_STRUCTURE) {
+			returnValue = false;
+		}
+
+		list = createArrayList(5);
+		stack = new ImprovedStackImpl(list);
+		
+		if (!stack.top().getReturnValue().toString().equals("1")) {
+			returnValue = false;
+		}
+
+
+
+		if (!stack.reverse().top().getReturnValue().toString().equals("5")) {
+			returnValue = false;
+		}
+
+		stack.pop();
+		stack.pop();
+
+
+		if (!stack.top().getReturnValue().toString().equals("3")) {
+			returnValue = false;
+		}
+
+		TestObj testObj = new TestObj("testObj");
+		stack.push(testObj);
+
+
+		if (stack.size() != 4) {
+			returnValue = false;
+		}
+
+		if (!stack.pop().getReturnValue().toString().equals("testObj")) {
+			returnValue = false;
+		}
+
+		if (stack.size() != 3) {
 			returnValue = false;
 		}
 		
-
 		return returnValue;
 
 
@@ -572,7 +611,7 @@ public class Test {
 		boolean returnValue = false; //different here because of first test
 		ArrayList list = createArrayList(55);
 		ImprovedStack stack = new ImprovedStackImpl(list);
-		Object testObj = new TestObj(33);
+		Object testObj = new TestObj(99);
 		stack.push(testObj);
 		
 		while(!stack.isEmpty()) {
@@ -598,13 +637,10 @@ public class Test {
 		if (stack.size() != 55) {
 			returnValue = false;
 		}
-
 		while(!stack.isEmpty()) {
-
 			if (stack.pop().getReturnValue().equals(testObj)) {
 				returnValue = false;
 			}
-
 		}
 		/*if (stack.size() != oldSize - 1 || stack.get(33).toString().equals("33")) {
 			returnValue = false;
@@ -631,13 +667,6 @@ public class Test {
 		System.out.println(testStackImpl());
 		System.out.println(testImprovedStackImplReverse());
 		System.out.println(testImprovedStackImplRemove());
-
-
-
-
-
-
-
 
 	}
 

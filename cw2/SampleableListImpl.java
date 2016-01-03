@@ -8,18 +8,8 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 		super();
 	}
 
-	public SampleableListImpl(SampleableList input) {
-		
-	}
-
-	//check 
-
-
+	@Override
 	public SampleableList sample() {
-		//Object[] sampledArray = returnSampledArray();
 		return new SampleableListImpl(returnSampledArray());
 	}
-
-	//public toSampleableListImpl
-
 }

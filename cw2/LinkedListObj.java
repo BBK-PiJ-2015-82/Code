@@ -1,11 +1,8 @@
 public class LinkedListObj extends Object {
 	
-
 	private Object thisObj;
 	private LinkedListObj nextObj;
 	private LinkedListObj prevObj;
-	//private int index;
-
 
 	public LinkedListObj(Object obj) {
 		this.thisObj = obj;
@@ -42,8 +39,4 @@ public class LinkedListObj extends Object {
 	public LinkedListObj getLinkedListObj() {
 		return this;
 	}
-
-
-	
-
 }

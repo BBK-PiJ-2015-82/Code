@@ -25,8 +25,6 @@ public class LinkedList implements List {
 		} else {
 			return false;
 		}
-		
-
 	}
 
 	@Override
@@ -41,39 +39,29 @@ public class LinkedList implements List {
 
 				current = current.getNext();
 			}
-			
 			return counter;
-
 		}
-
 	}
-
 
 	@Override
 	public ReturnObjectImpl add(Object item) {
 		ReturnObjectImpl returnObj = null;
-
 		if (item == null) {
 			returnObj = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
-
 			LinkedListObj newObj = new LinkedListObj(item);
 			if (this.head == null) {
 				head = newObj;
 			} else {
 				LinkedListObj current = head;
-
 				while (current.getNext() != null) {
 					current = current.getNext();
 				}
 				current.setNext(item);
-
 				current.getNext().setPrev(current);
 			}
 		}
-
 		return returnObj;
-
 	} 
 
 	@Override
@@ -84,27 +72,18 @@ public class LinkedList implements List {
 		} else if (isEmpty()) {
 			returnObj = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-
-
-
 			LinkedListObj current = head;
 			int counter = 0;
-
 			while (counter != index) {
 				current = current.getNext();
 				counter++;
 			}
-
 			returnObj = new ReturnObjectImpl(current.getObj());
-
-
-
 		}
 		return returnObj;
-
 	}
 
-
+	@Override
 	public ReturnObject remove(int index) {
 		ReturnObjectImpl returnObj = null;
 		LinkedListObj removeObj = null;
@@ -146,11 +125,8 @@ public class LinkedList implements List {
 			} else {
 				current.getPrev().killNext();
 			}
-			
-
 		}
 		return returnObj;
-
 	}
 
 	public ReturnObject add(int index, Object item) {
@@ -175,18 +151,12 @@ public class LinkedList implements List {
 					head = newObj;
 				} else if (index == 0 && !isEmpty()) {
 					LinkedListObj oldHead = head;
-					//System.out.println(oldHead.getNext().getObj().toString());
-					//System.out.println("here");
-
 					head = newObj;
 					head.setNext(oldHead);
 					oldHead.setPrev(head);
-
 				}	else {
-
 					LinkedListObj current = head;
 					int counter = 0;
-
 					while (counter != index) {
 						current = current.getNext();
 						counter++;
@@ -201,11 +171,10 @@ public class LinkedList implements List {
 				}
 			}
 		}
-
 		return returnObj;
 	}
 
-
+	// ADDITIONAL METHOD
 
 	public LinkedListObj returnListWithoutHead() {
 		if (isEmpty() || size() == 1) {
@@ -217,18 +186,10 @@ public class LinkedList implements List {
 		}
 	}
 
-
 	// HERE FOR TESTING
 	public void toStringFull() {
 		for (int i = 0; i < size(); i++) {
 			System.out.println(this.get(i).getReturnValue().toString());
-
 		}
 	}
-
-}		
-
-
-
-
-	//remove() - don't forget to size--
+}

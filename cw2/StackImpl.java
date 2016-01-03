@@ -4,23 +4,12 @@ public class StackImpl extends AbstractStack {
 		super(list);
 	}
 
-	/*
-	
-	protected List internalList;
+	@Override
+	public boolean isEmpty() {
+		return internalList.isEmpty();
+	}
 
-	public AbstractStack(List list) {
-	  this.internalList = list;
-    }
-
-     */
-
-    @Override
-    public boolean isEmpty() {
-    	return internalList.isEmpty();
-
-    }
-
-    @Override
+	@Override
 	public int size() {
 		return internalList.size();
 	}		
@@ -28,30 +17,29 @@ public class StackImpl extends AbstractStack {
 	@Override
 	public void push(Object item) {
 		internalList.add(0, item);
-
 	}
 
+	@Override
 	public ReturnObject top() {
 		return internalList.get(0);
 	}
 
-	;
-
+	@Override
 	public ReturnObject pop() {
-
 		return internalList.remove(0);
 	}
 
-	
-	// for testing
+	//FOR TESTING
 
 	public void toStringFull() {
 		for (int i = 0; i < size(); i++) {
 			System.out.println(this.internalList.get(i).getReturnValue().toString());
-
 		}
 	}
-	
 
-
+	public void popAll() {
+		while(!isEmpty()) {
+			System.out.println(this.pop().getReturnValue().toString());
+		}
+	}
 }
