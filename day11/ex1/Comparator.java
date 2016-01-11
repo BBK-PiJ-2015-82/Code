@@ -1,4 +1,4 @@
-public class Comparator<T extends Comparable<T>> {
+public class Comparator<T> extends Comparable<T>> {
 
 	public T getMax(T n, T m) {
 		
