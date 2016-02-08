@@ -40,12 +40,16 @@ public class IntegerString {
 
 	}
 
+	public Object getSingleValue(int key) {
+		return value[key][0];
+	}
+
 	public int size() {
 
 			int i = 0;
-			do {
+			while (value[i][0] != null) {
 				i++;
-			} while (value[i][0] != null);
+			}
 			return i;			
 		
 	}
@@ -72,17 +76,7 @@ public class IntegerString {
 		return true;
 	}
 
-	public void launch() {
-		this.put(555, "tttt");
-		this.put(565, "sdfsdfsdfsfd");
-		this.put(565, "sdfwerewwerwr");
-
-		String[] printArray = get(565);
-		System.out.println(printArray[0]);
-		System.out.println(isEmpty());
-
-
-	}
+	
 /*
 	public static void main (String[] args) {
 		IntegerString integerString = new IntegerString(1000, 10);
